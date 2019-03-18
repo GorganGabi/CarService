@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Service
 {
-    public class IComandaService
+    public interface IDto
     {
 
     }

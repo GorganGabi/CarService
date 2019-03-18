@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarService.Data\CarService.Data.csproj" />
     <ProjectReference Include="..\CarService.Infrastructure\CarService.Infrastructure.csproj" />
     <ProjectReference Include="..\CarService.Service\CarService.Service.csproj" />
-    <ProjectReference Include="..\ModelDesignFirst_L1\CarService.Data.csproj" />
   </ItemGroup>
 
 </Project>

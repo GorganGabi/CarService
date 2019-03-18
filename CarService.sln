@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Data", "ModelDesignFirst_L1\CarService.Data.csproj", "{EC0CF784-7CD5-4B4C-9496-32E5B9EBF58A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Data", "CarService.Data\CarService.Data.csproj", "{EC0CF784-7CD5-4B4C-9496-32E5B9EBF58A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Service", "CarService.Service\CarService.Service.csproj", "{547FEFD4-8134-4DC8-9FA1-BBD55434AE68}"
 EndProject
