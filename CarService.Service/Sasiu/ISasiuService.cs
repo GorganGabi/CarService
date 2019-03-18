@@ -4,7 +4,11 @@ using System.Text;
 
 namespace CarService.Service
 {
-    public class ISasiuService
+    public interface ISasiuService
     {
+        void CreateNew(SasiuDto sasiuDto);
+        SasiuDto FindById(int sasiuId);
+        void Update(SasiuDto sasiuDto);
+        void Delete(SasiuDto sasiuDto);
     }
 }

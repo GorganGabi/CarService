@@ -37,20 +37,20 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Update(AutoDto autoDto)
+        public void Update(AutoDto updateAuto)
         {
-            if (autoDto == null)
+            if (updateAuto == null)
             {
-                throw new ArgumentNullException(nameof(autoDto));
+                throw new ArgumentNullException(nameof(updateAuto));
             }
 
             var auto = new Auto
             {
-                Client = autoDto.Client,
-                Comanda = autoDto.Comanda,
-                NumarAuto = autoDto.NumarAuto,
-                Sasiu = autoDto.Sasiu,
-                SerieSasiu = autoDto.SerieSasiu
+                Client = updateAuto.Client,
+                Comanda = updateAuto.Comanda,
+                NumarAuto = updateAuto.NumarAuto,
+                Sasiu = updateAuto.Sasiu,
+                SerieSasiu = updateAuto.SerieSasiu
             };
 
             autoRepository.Update(auto);

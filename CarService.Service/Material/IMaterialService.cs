@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarService.Service.Material
+namespace CarService.Service
 {
-    public class IMaterialService
+    public interface IMaterialService
     {
+        void CreateNew(IMaterialService materialDto);
+        IMaterialService FindById(int materialId);
+        void Update(IMaterialService materialDto);
+        void Delete(IMaterialService materialDto);
     }
 }

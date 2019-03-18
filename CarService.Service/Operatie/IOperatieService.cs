@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarService.Service.Operatie
+namespace CarService.Service
 {
-    public class IOperatieService
+    public interface IOperatieService
     {
+        void CreateNew(OperatieDto operatieDto);
+        OperatieDto FindById(int operatieId);
+        void Update(OperatieDto operatieDto);
+        void Delete(OperatieDto operatieDto);
     }
 }
