@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarService.Service
+﻿namespace CarService.Service
 {
     public interface IMaterialService
     {

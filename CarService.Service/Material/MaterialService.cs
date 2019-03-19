@@ -1,8 +1,6 @@
 ﻿using CarService.Infrastructure;
 using ModelDesignFirst_L1;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace CarService.Service
