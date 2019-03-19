@@ -6,9 +6,9 @@ namespace CarService.Service
 {
     public interface IClientService
     {
-        void CreateNew(ClientDto autoDto);
-        ClientDto FindById(int autoId);
-        void Update(ClientDto autoDto);
-        void Delete(ClientDto autoDto);
+        void CreateNew(ClientDto clientDto);
+        ClientDto FindById(int clientId);
+        void Update(ClientDto clientDto);
+        void Delete(ClientDto clientDto);
     }
 }

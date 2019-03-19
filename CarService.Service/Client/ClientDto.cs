@@ -17,6 +17,6 @@ namespace CarService.Service
         public string Email { get; set; }
 
         public virtual Comanda Comanda { get; set; }
-        public virtual Auto Auto { get; set; }
+        public virtual ICollection<Auto> Auto { get; set; }
     }
 }

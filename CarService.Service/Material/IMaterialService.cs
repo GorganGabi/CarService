@@ -6,9 +6,9 @@ namespace CarService.Service
 {
     public interface IMaterialService
     {
-        void CreateNew(IMaterialService materialDto);
-        IMaterialService FindById(int materialId);
-        void Update(IMaterialService materialDto);
-        void Delete(IMaterialService materialDto);
+        void CreateNew(MaterialDto materialDto);
+        MaterialDto FindById(int materialId);
+        void Update(MaterialDto materialDto);
+        void Delete(MaterialDto materialDto);
     }
 }

@@ -92,7 +92,7 @@ namespace CarService.Service
                 return null;
             }
 
-            var autoDto = new Auto
+            var autoDto = new AutoDto
             {
                 Client = auto.Client,
                 Comanda = auto.Comanda,
@@ -101,7 +101,7 @@ namespace CarService.Service
                 SerieSasiu = auto.SerieSasiu
             };
 
-            return new AutoDto();
+            return autoDto;
         }
     }
 }
