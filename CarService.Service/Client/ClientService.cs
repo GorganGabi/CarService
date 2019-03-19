@@ -1,6 +1,7 @@
 ﻿using CarService.Infrastructure;
 using ModelDesignFirst_L1;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CarService.Service
@@ -99,6 +100,25 @@ namespace CarService.Service
             return clientDto;
         }
 
+        public ClientDto GetCars(int clientId)
+        {
+            if (clientId < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(clientId));
+            }
+
+            var clientCars = clientRepository.Query(c => c.Id == clientId)
+                                             .SelectMany(c => c.Auto)
+                                             .ToList();
+
+            var clientDto = new ClientDto
+            {
+                Auto = clientCars
+            };
+
+            return clientDto;
+        }
+
         public void Update(ClientDto clientDto)
         {
             if (clientDto == null)
@@ -106,21 +126,17 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(clientDto));
             }
 
-            var client = new Client
-            {
-                Adresa = clientDto.Adresa,
-                Auto = clientDto.Auto,
-                Comanda = clientDto.Comanda,
-                Email = clientDto.Email,
-                Judet = clientDto.Judet,
-                Localitate = clientDto.Localitate,
-                Nume = clientDto.Nume,
-                Prenume = clientDto.Prenume,
-                Telefon = clientDto.Telefon
+            var client = clientRepository.Get(c => c.Id == clientDto.Id).FirstOrDefault();
 
-            };
+            client.Judet = clientDto.Judet ?? client.Judet;
+            client.Localitate = clientDto.Localitate ?? clientDto.Localitate;
+            client.Nume = clientDto.Nume ?? client.Nume;
+            client.Telefon = clientDto.Telefon == default(decimal) ? client.Telefon : clientDto.Telefon;
+            client.Adresa = clientDto.Adresa ?? client.Adresa;
+            client.Auto = clientDto.Auto ?? client.Auto;
+            client.Comanda = clientDto.Comanda ?? client.Comanda;
+            client.Email = clientDto.Email ?? client.Email;
 
-            clientRepository.Update(client);
             unitOfWork.Commit();
         }
     }

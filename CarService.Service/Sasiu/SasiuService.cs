@@ -28,7 +28,7 @@ namespace CarService.Service
                 Auto = sasiuDto.Auto,
                 CodSasiu = sasiuDto.CodSasiu,
                 Denumire = sasiuDto.Denumire,
-                
+
             };
 
             sasiuRepository.Add(sasiu);
@@ -63,7 +63,7 @@ namespace CarService.Service
 
             var sasiu = sasiuRepository.Query(s => s.Id == sasiuId)
                                        .FirstOrDefault();
-                
+
 
             if (sasiu == null)
             {
@@ -88,15 +88,12 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(sasiuDto));
             }
 
-            var sasiu = new Sasiu
-            {
-                Auto = sasiuDto.Auto,
-                CodSasiu = sasiuDto.CodSasiu,
-                Denumire = sasiuDto.Denumire,
+            var sasiu = sasiuRepository.Get(s => s.Id == sasiuDto.Id).FirstOrDefault();
 
-            };
+            sasiu.Auto = sasiuDto.Auto ?? sasiu.Auto;
+            sasiu.CodSasiu = sasiuDto.CodSasiu ?? sasiu.CodSasiu;
+            sasiu.Denumire = sasiuDto.Denumire ?? sasiu.Denumire;
 
-            sasiuRepository.Update(sasiu);
             unitOfWork.Commit();
         }
     }

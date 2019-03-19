@@ -43,16 +43,14 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(updateAuto));
             }
 
-            var auto = new Auto
-            {
-                Client = updateAuto.Client,
-                Comanda = updateAuto.Comanda,
-                NumarAuto = updateAuto.NumarAuto,
-                Sasiu = updateAuto.Sasiu,
-                SerieSasiu = updateAuto.SerieSasiu
-            };
+            var auto = autoRepository.Get(a => a.Id == updateAuto.Id).FirstOrDefault();
 
-            autoRepository.Update(auto);
+            auto.Client = updateAuto.Client ?? auto.Client;
+            auto.Comanda = updateAuto.Comanda ?? auto.Comanda;
+            auto.NumarAuto = updateAuto.NumarAuto ?? auto.NumarAuto;
+            auto.Sasiu = updateAuto.Sasiu ?? auto.Sasiu;
+            auto.SerieSasiu = updateAuto.SerieSasiu ?? auto.SerieSasiu;
+
             unitOfWork.Commit();
         }
 

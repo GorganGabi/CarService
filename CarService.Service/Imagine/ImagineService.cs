@@ -90,16 +90,14 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(imagineDto));
             }
 
-            var imagine = new Imagine
-            {
-                Data = imagineDto.Data,
-                Descriere = imagineDto.Descriere,
-                DetaliuComanda = imagineDto.DetaliuComanda,
-                Foto = imagineDto.Foto,
-                Titlu = imagineDto.Titlu
-            };
+            var imagine = imagineRepository.Get(i => i.Id == imagineDto.Id).FirstOrDefault();
 
-            imagineRepository.Update(imagine);
+            imagine.Data = imagineDto.Data == default(DateTime) ? imagine.Data : imagineDto.Data;
+            imagine.Descriere = imagineDto.Descriere ?? imagine.Descriere;
+            imagine.DetaliuComanda = imagineDto.DetaliuComanda ?? imagine.DetaliuComanda;
+            imagine.Foto = imagineDto.Foto ?? imagine.Foto;
+            imagine.Titlu = imagineDto.Titlu ?? imagine.Titlu;
+
             unitOfWork.Commit();
         }
     }

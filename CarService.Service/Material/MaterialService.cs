@@ -90,16 +90,14 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(materialDto));
             }
 
-            var material = new Material
-            {
-                Cantitate = materialDto.Cantitate,
-                DataAprovizionare = materialDto.DataAprovizionare,
-                Denumire = materialDto.Denumire,
-                DetaliuComanda = materialDto.DetaliuComanda,
-                Pret = materialDto.Pret
-            };
+            var material = materialRepository.Get(m => m.Id == materialDto.Id).FirstOrDefault();
 
-            materialRepository.Update(material);
+            material.Cantitate = materialDto.Cantitate == default(decimal) ? material.Cantitate : materialDto.Cantitate;
+            material.DataAprovizionare = materialDto.DataAprovizionare == default(DateTime) ? material.DataAprovizionare : materialDto.DataAprovizionare;
+            material.Denumire = materialDto.Denumire ?? material.Denumire;
+            material.DetaliuComanda = materialDto.DetaliuComanda ?? material.DetaliuComanda;
+            material.Pret = materialDto.Pret == default(int) ? material.Pret : materialDto.Pret;
+
             unitOfWork.Commit();
         }
     }

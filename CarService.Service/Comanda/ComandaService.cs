@@ -9,6 +9,7 @@ namespace CarService.Service
     {
         private readonly IRepository<Comanda> comandaRepository;
         private readonly UnitOfWork unitOfWork;
+        private enum StareComanda { InAsteptare, Executata, RefuzataLaExecutie };
 
         public ComandaService(IRepository<Comanda> comandaRepository, UnitOfWork unitOfWork)
         {
@@ -27,13 +28,13 @@ namespace CarService.Service
             {
                 Auto = comandaDto.Auto,
                 Client = comandaDto.Client,
-                DataFinalizare  = comandaDto.DataFinalizare, 
+                DataFinalizare = comandaDto.DataFinalizare,
                 DataProgramare = comandaDto.DataProgramare,
                 DataSystem = comandaDto.DataSystem,
                 Descriere = comandaDto.Descriere,
                 DetaliuComanda = comandaDto.DetaliuComanda,
                 KmBord = comandaDto.KmBord,
-                StareComanda = comandaDto.StareComanda,
+                StareComanda = (int)StareComanda.InAsteptare,
                 ValoarePise = comandaDto.ValoarePise
             };
 
@@ -105,21 +106,19 @@ namespace CarService.Service
                 throw new ArgumentOutOfRangeException(nameof(comandaDto));
             }
 
-            var comanda = new Comanda
-            {
-                Auto = comandaDto.Auto,
-                Client = comandaDto.Client,
-                DataFinalizare = comandaDto.DataFinalizare,
-                DataProgramare = comandaDto.DataProgramare,
-                DataSystem = comandaDto.DataSystem,
-                Descriere = comandaDto.Descriere,
-                DetaliuComanda = comandaDto.DetaliuComanda,
-                KmBord = comandaDto.KmBord,
-                StareComanda = comandaDto.StareComanda,
-                ValoarePise = comandaDto.ValoarePise
-            };
+            var comanda = comandaRepository.Get(c => c.Id == comandaDto.Id).FirstOrDefault();
 
-            comandaRepository.Update(comanda);
+            comanda.Auto = comandaDto.Auto ?? comanda.Auto;
+            comanda.Client = comandaDto.Client ?? comanda.Client;
+            comanda.DataFinalizare = comandaDto.DataFinalizare == default(DateTime) ? comanda.DataFinalizare : comandaDto.DataFinalizare;
+            comanda.DataProgramare = comandaDto.DataProgramare == default(DateTime) ? comanda.DataProgramare : comandaDto.DataProgramare;
+            comanda.DataSystem = comandaDto.DataSystem ?? comanda.DataSystem;
+            comanda.Descriere = comandaDto.Descriere ?? comanda.Descriere;
+            comanda.DetaliuComanda = comandaDto.DetaliuComanda ?? comanda.DetaliuComanda;
+            comanda.KmBord = comandaDto.KmBord == default(int) ? comanda.KmBord : comandaDto.KmBord;
+            comanda.StareComanda = comandaDto.StareComanda == default(int) ? comanda.StareComanda : comanda.StareComanda;
+            comanda.ValoarePise = comandaDto.ValoarePise == default(int) ? comanda.ValoarePise : comanda.ValoarePise;
+
             unitOfWork.Commit();
         }
     }

@@ -84,14 +84,12 @@ namespace CarService.Service
                 throw new ArgumentOutOfRangeException(nameof(mecanicDto));
             }
 
-            var mecanic = new Mecanic
-            {
-                DetaliuComanda = mecanicDto.DetaliuComanda,
-                Nume = mecanicDto.Nume,
-                Prenume = mecanicDto.Prenume
-            };
+            var mecanic = mecanicRepository.Get(m => m.Id == mecanicDto.Id).FirstOrDefault();
 
-            mecanicRepository.Update(mecanic);
+            mecanic.Nume = mecanicDto.Nume ?? mecanic.Nume;
+            mecanic.Prenume = mecanicDto.Prenume ?? mecanic.Prenume;
+            mecanic.DetaliuComanda = mecanicDto.DetaliuComanda ?? mecanic.DetaliuComanda;
+
             unitOfWork.Commit();
         }
     }

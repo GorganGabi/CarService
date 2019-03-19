@@ -6,5 +6,6 @@
         ClientDto FindById(int clientId);
         void Update(ClientDto clientDto);
         void Delete(ClientDto clientDto);
+        ClientDto GetCars(int clientId);
     }
 }

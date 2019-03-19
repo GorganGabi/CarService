@@ -84,14 +84,12 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(operatieDto));
             }
 
-            var operatie = new Operatie
-            {
-                Denumire = operatieDto.Denumire,
-                DetaliuComanda = operatieDto.DetaliuComanda,
-                TimpExecutie = operatieDto.TimpExecutie
-            };
+            var operatie = operatieRepository.Get(o => o.Id == operatieDto.Id).FirstOrDefault();
 
-            operatieRepository.Update(operatie);
+            operatie.Denumire = operatieDto.Denumire ?? operatie.Denumire;
+            operatie.DetaliuComanda = operatieDto.DetaliuComanda ?? operatie.DetaliuComanda;
+            operatie.TimpExecutie = operatieDto.TimpExecutie == default(decimal) ? operatie.TimpExecutie : operatieDto.TimpExecutie;
+
             unitOfWork.Commit();
         }
     }

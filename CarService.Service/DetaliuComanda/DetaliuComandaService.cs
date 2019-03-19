@@ -91,16 +91,14 @@ namespace CarService.Service
                 throw new ArgumentNullException(nameof(detaliuComandaDto));
             }
 
-            var detaliuComanda = new DetaliuComanda
-            {
-                Comanda = detaliuComandaDto.Comanda,
-                Imagines = detaliuComandaDto.Imagines,
-                Materials = detaliuComandaDto.Materials,
-                Mecanici = detaliuComandaDto.Mecanici,
-                Operaties = detaliuComandaDto.Operaties
-            };
+            var detaliuComanda = detaliuComandaRepository.Get(dc => dc.Id == detaliuComandaDto.Id).FirstOrDefault();
 
-            detaliuComandaRepository.Update(detaliuComanda);
+            detaliuComanda.Comanda = detaliuComandaDto.Comanda ?? detaliuComanda.Comanda;
+            detaliuComanda.Imagines = detaliuComandaDto.Imagines ?? detaliuComanda.Imagines;
+            detaliuComanda.Materials = detaliuComandaDto.Materials ?? detaliuComanda.Materials;
+            detaliuComanda.Mecanici = detaliuComandaDto.Mecanici ?? detaliuComanda.Mecanici;
+            detaliuComanda.Operaties = detaliuComandaDto.Operaties ?? detaliuComanda.Operaties;
+
             unitOfWork.Commit();
         }
     }
