@@ -1,6 +1,6 @@
 ﻿namespace ModelDesignFirst_L1
 {
-    public partial class Comanda : IEntity
+    public partial class Comanda : Entity
     {
         public int DetaliuComanda_Id { get; set; }
 

@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace CarService.Infrastructure
 {
-    public class Repository<T> : IRepository<T> where T : IEntity
+    public class Repository<T> : IRepository<T> where T : Entity
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly DbSet<T> dbSet;

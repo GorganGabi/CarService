@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace CarService.Infrastructure
 {
-    public interface IRepository<T> where T : IEntity
+    public interface IRepository<T> where T : Entity
     {
         IQueryable<T> Query();
         IQueryable<T> Query(Expression<Func<T, bool>> expression);
