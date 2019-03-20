@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/18/2019 19:47:52
--- Generated from EDMX file: F:\Proiecte\Visual Studio Projects\C#\TSP.NET\CarService\ModelDesignFirst_L1\Model1.edmx
+-- Date Created: 03/20/2019 13:07:25
+-- Generated from EDMX file: F:\Proiecte\Visual Studio Projects\C#\TSP.NET\CarService\CarService.Data\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -24,7 +24,7 @@ IF OBJECT_ID(N'[dbo].[FK_AutoComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Autoes] DROP CONSTRAINT [FK_AutoComanda];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ClientAuto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Clienti] DROP CONSTRAINT [FK_ClientAuto];
+    ALTER TABLE [dbo].[Autoes] DROP CONSTRAINT [FK_ClientAuto];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ComandaDetaliuComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Comenzi] DROP CONSTRAINT [FK_ComandaDetaliuComanda];
@@ -90,8 +90,7 @@ CREATE TABLE [dbo].[Clienti] (
     [Localitate] nvarchar(10)  NOT NULL,
     [Judet] nvarchar(10)  NOT NULL,
     [Telefon] decimal(13,0)  NOT NULL,
-    [Email] nvarchar(50)  NOT NULL,
-    [Comanda_Id] int  NOT NULL
+    [Email] nvarchar(50)  NOT NULL
 );
 GO
 
@@ -235,21 +234,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [Comanda_Id] in table 'Clienti'
-ALTER TABLE [dbo].[Clienti]
-ADD CONSTRAINT [FK_ClientComanda]
-    FOREIGN KEY ([Comanda_Id])
-    REFERENCES [dbo].[Comenzi]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ClientComanda'
-CREATE INDEX [IX_FK_ClientComanda]
-ON [dbo].[Clienti]
-    ([Comanda_Id]);
-GO
 
 -- Creating foreign key on [Comanda_Id] in table 'Autoes'
 ALTER TABLE [dbo].[Autoes]

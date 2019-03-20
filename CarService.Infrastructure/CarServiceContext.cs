@@ -46,11 +46,6 @@ namespace CarService.Infrastructure
                 .WithOne(a => a.Client)
                 .HasForeignKey(a => a.Client_Id);
 
-            modelBuilder.Entity<Client>()
-                .HasOne(cl => cl.Comanda)
-                .WithOne(c => c.Client)
-                .HasForeignKey<Comanda>(c => c.Client_Id);
-
             modelBuilder.Entity<Comanda>()
                 .HasOne(c => c.DetaliuComanda)
                 .WithOne(dc => dc.Comanda)

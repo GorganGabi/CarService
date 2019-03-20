@@ -12,23 +12,17 @@ namespace CarService.Console
 
             var unitOfWork = new UnitOfWork(autoContext);
 
-            var autoRepository = new Repository<Auto>(unitOfWork);
+            var sasiuRepository = new Repository<Sasiu>(unitOfWork);
 
-            var autoService = new AutoService(autoRepository, unitOfWork);
+            var sasiuService = new SasiuService(sasiuRepository, unitOfWork);
 
-            var auto = new AutoDto
+            var sasiu = new SasiuDto
             {
-                NumarAuto = "",
-                //Sasiu = new Sasiu
-                //{
-                //    CodSasiu = "CodSasiu",
-                //    Denumire= "Denumire",                   
-                //},
-                SerieSasiu = ""
+                Denumire = "DenumireSasiu",
+                CodSasiu = "4F"
             };
-            
-            autoService.CreateNew(auto);
-            unitOfWork.Commit();
+
+            sasiuService.CreateNew(sasiu);
 
         }
     }

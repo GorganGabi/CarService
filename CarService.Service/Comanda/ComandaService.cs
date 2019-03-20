@@ -27,7 +27,6 @@ namespace CarService.Service
             var comanda = new Comanda
             {
                 Auto = comandaDto.Auto,
-                Client = comandaDto.Client,
                 DataFinalizare = comandaDto.DataFinalizare,
                 DataProgramare = comandaDto.DataProgramare,
                 DataSystem = comandaDto.DataSystem,
@@ -52,7 +51,6 @@ namespace CarService.Service
             var comanda = new Comanda
             {
                 Auto = comandaDto.Auto,
-                Client = comandaDto.Client,
                 DataFinalizare = comandaDto.DataFinalizare,
                 DataProgramare = comandaDto.DataProgramare,
                 DataSystem = comandaDto.DataSystem,
@@ -85,7 +83,6 @@ namespace CarService.Service
             var comandaDto = new ComandaDto
             {
                 Auto = comanda.Auto,
-                Client = comanda.Client,
                 DataFinalizare = comanda.DataFinalizare,
                 DataProgramare = comanda.DataProgramare,
                 DataSystem = comanda.DataSystem,
@@ -109,7 +106,6 @@ namespace CarService.Service
             var comanda = comandaRepository.Get(c => c.Id == comandaDto.Id).FirstOrDefault();
 
             comanda.Auto = comandaDto.Auto ?? comanda.Auto;
-            comanda.Client = comandaDto.Client ?? comanda.Client;
             comanda.DataFinalizare = comandaDto.DataFinalizare == default(DateTime) ? comanda.DataFinalizare : comandaDto.DataFinalizare;
             comanda.DataProgramare = comandaDto.DataProgramare == default(DateTime) ? comanda.DataProgramare : comandaDto.DataProgramare;
             comanda.DataSystem = comandaDto.DataSystem ?? comanda.DataSystem;

@@ -29,7 +29,6 @@ namespace ModelDesignFirst_L1
         public decimal Telefon { get; set; }
         public string Email { get; set; }
     
-        public virtual Comanda Comanda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auto> Auto { get; set; }
     }

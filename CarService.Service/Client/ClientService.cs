@@ -28,7 +28,6 @@ namespace CarService.Service
             {
                 Adresa = clientDto.Adresa,
                 Auto = clientDto.Auto,
-                Comanda = clientDto.Comanda,
                 Email = clientDto.Email,
                 Judet = clientDto.Judet,
                 Localitate = clientDto.Localitate,
@@ -53,7 +52,6 @@ namespace CarService.Service
             {
                 Adresa = clientDto.Adresa,
                 Auto = clientDto.Auto,
-                Comanda = clientDto.Comanda,
                 Email = clientDto.Email,
                 Judet = clientDto.Judet,
                 Localitate = clientDto.Localitate,
@@ -88,7 +86,6 @@ namespace CarService.Service
             {
                 Adresa = client.Adresa,
                 Auto = client.Auto,
-                Comanda = client.Comanda,
                 Email = client.Email,
                 Judet = client.Judet,
                 Localitate = client.Localitate,
@@ -134,7 +131,6 @@ namespace CarService.Service
             client.Telefon = clientDto.Telefon == default(decimal) ? client.Telefon : clientDto.Telefon;
             client.Adresa = clientDto.Adresa ?? client.Adresa;
             client.Auto = clientDto.Auto ?? client.Auto;
-            client.Comanda = clientDto.Comanda ?? client.Comanda;
             client.Email = clientDto.Email ?? client.Email;
 
             unitOfWork.Commit();

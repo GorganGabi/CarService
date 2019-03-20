@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6d1b4179e94c459eb6a64e45e9853343" Name="Diagram1" ZoomLevel="71" >
+      <Diagram DiagramId="6d1b4179e94c459eb6a64e45e9853343" Name="Diagram1" ZoomLevel="70" >
         <EntityTypeShape EntityType="Model1.Client" Width="1.25" PointX="4" PointY="3" />
         <EntityTypeShape EntityType="Model1.Auto" Width="1.5" PointX="1.25" PointY="3" />
         <EntityTypeShape EntityType="Model1.Mecanic" Width="1.5" PointX="7.375" PointY="8.5" />
@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="Model1.Imagine" Width="1.5" PointX="10" PointY="4.375" />
         <EntityTypeShape EntityType="Model1.Operatie" Width="2.125" PointX="7.125" PointY="2.875" />
         <EntityTypeShape EntityType="Model1.Comanda" Width="1.5" PointX="4.5" PointY="7.25" />
-        <AssociationConnector Association="Model1.ClientComanda" />
         <AssociationConnector Association="Model1.AutoComanda" />
         <AssociationConnector Association="Model1.ClientAuto" />
         <EntityTypeShape EntityType="Model1.DetaliuComanda" Width="1.5" PointX="7.25" PointY="5.25" />

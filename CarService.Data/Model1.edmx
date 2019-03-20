@@ -15,10 +15,6 @@
     <EntitySet Name="Comenzi" EntityType="Model1.Store.Comenzi" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetaliuComenzi" EntityType="Model1.Store.DetaliuComenzi" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Sasius" EntityType="Model1.Store.Sasius" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="ClientComanda" Association="Model1.Store.ClientComanda">
-      <End Role="Client" EntitySet="Clienti" />
-      <End Role="Comanda" EntitySet="Comenzi" />
-    </AssociationSet>
     <AssociationSet Name="AutoComanda" Association="Model1.Store.AutoComanda">
       <End Role="Auto" EntitySet="Autoes" />
       <End Role="Comanda" EntitySet="Comenzi" />
@@ -64,7 +60,6 @@
     <Property Name="Judet" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="Telefon" Type="decimal" Nullable="false" Precision="13" Scale="0" />
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Comanda_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Autoes">
     <Key>
@@ -145,18 +140,6 @@
     <Property Name="CodSasiu" Type="nchar" Nullable="false" MaxLength="2" />
     <Property Name="Denumire" Type="nvarchar" Nullable="false" MaxLength="25" />
   </EntityType>
-  <Association Name="ClientComanda">
-    <End Role="Client" Type="Model1.Store.Clienti" Multiplicity="*" />
-    <End Role="Comanda" Type="Model1.Store.Comenzi" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Comanda">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Client">
-        <PropertyRef Name="Comanda_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="AutoComanda">
     <End Role="Auto" Type="Model1.Store.Autoes" Multiplicity="*" />
     <End Role="Comanda" Type="Model1.Store.Comenzi" Multiplicity="1" />
@@ -265,10 +248,6 @@
           <EntitySet Name="Imagini" EntityType="Model1.Imagine" />
           <EntitySet Name="Operatii" EntityType="Model1.Operatie" />
           <EntitySet Name="Comenzi" EntityType="Model1.Comanda" />
-          <AssociationSet Name="ClientComanda" Association="Model1.ClientComanda">
-            <End Role="Client" EntitySet="Clienti" />
-            <End Role="Comanda" EntitySet="Comenzi" />
-          </AssociationSet>
           <AssociationSet Name="AutoComanda" Association="Model1.AutoComanda">
             <End Role="Auto" EntitySet="Autoes" />
             <End Role="Comanda" EntitySet="Comenzi" />
@@ -316,7 +295,6 @@
           <Property Name="Judet" Type="String" Nullable="false" MaxLength="10" />
           <Property Name="Telefon" Type="Decimal" Nullable="false" Precision="13" Scale="0" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" />
-          <NavigationProperty Name="Comanda" Relationship="Model1.ClientComanda" FromRole="Client" ToRole="Comanda" />
           <NavigationProperty Name="Auto" Relationship="Model1.ClientAuto" FromRole="Client" ToRole="Auto" />
         </EntityType>
         <EntityType Name="Auto">
@@ -375,7 +353,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Client" Relationship="Model1.ClientComanda" FromRole="Comanda" ToRole="Client" />
           <NavigationProperty Name="Auto" Relationship="Model1.AutoComanda" FromRole="Comanda" ToRole="Auto" />
           <Property Name="StareComanda" Type="Int32" Nullable="false" />
           <Property Name="DataSystem" Type="String" Nullable="false" />
@@ -386,10 +363,6 @@
           <Property Name="ValoarePise" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <NavigationProperty Name="DetaliuComanda" Relationship="Model1.ComandaDetaliuComanda" FromRole="Comanda" ToRole="DetaliuComanda" />
         </EntityType>
-        <Association Name="ClientComanda">
-          <End Type="Model1.Client" Role="Client" Multiplicity="1" />
-          <End Type="Model1.Comanda" Role="Comanda" Multiplicity="1" />
-        </Association>
         <Association Name="AutoComanda">
           <End Type="Model1.Auto" Role="Auto" Multiplicity="1" />
           <End Type="Model1.Comanda" Role="Comanda" Multiplicity="1" />
@@ -541,14 +514,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ClientComanda" TypeName="Model1.ClientComanda" StoreEntitySet="Clienti">
-      <EndProperty Name="Comanda">
-        <ScalarProperty Name="Id" ColumnName="Comanda_Id" />
-      </EndProperty>
-      <EndProperty Name="Client">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="AutoComanda" TypeName="Model1.AutoComanda" StoreEntitySet="Autoes">
       <EndProperty Name="Comanda">
         <ScalarProperty Name="Id" ColumnName="Comanda_Id" />

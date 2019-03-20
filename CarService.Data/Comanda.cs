@@ -23,7 +23,6 @@ namespace ModelDesignFirst_L1
         public string Descriere { get; set; }
         public decimal ValoarePise { get; set; }
     
-        public virtual Client Client { get; set; }
         public virtual Auto Auto { get; set; }
         public virtual DetaliuComanda DetaliuComanda { get; set; }
     }
