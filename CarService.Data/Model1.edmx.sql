@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2019 13:07:25
+-- Date Created: 03/20/2019 13:21:55
 -- Generated from EDMX file: F:\Proiecte\Visual Studio Projects\C#\TSP.NET\CarService\CarService.Data\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,9 +17,6 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_ClientComanda]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Clienti] DROP CONSTRAINT [FK_ClientComanda];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AutoComanda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Autoes] DROP CONSTRAINT [FK_AutoComanda];
 GO

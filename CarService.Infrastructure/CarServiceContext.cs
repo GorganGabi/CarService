@@ -21,7 +21,7 @@ namespace CarService.Infrastructure
 
         public DbSet<Operatie> Operatii { get; set; }
 
-        public DbSet<Sasiu> Sasiuri { get; set; }
+        public DbSet<Sasiu> Sasius { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,20 +36,20 @@ namespace CarService.Infrastructure
                 .WithOne(c => c.Auto)
                 .HasForeignKey<Comanda>(c => c.Auto_Id);
 
-            modelBuilder.Entity<Auto>()
-                 .HasOne(a => a.Sasiu)
-                 .WithOne(s => s.Auto)
-                 .HasForeignKey<Sasiu>(s => s.Auto_Id);
+            modelBuilder.Entity<Sasiu>()
+                 .HasOne(s => s.Auto)
+                 .WithOne(a => a.Sasiu)
+                 .HasForeignKey<Auto>(a => a.Sasiu_Id);
 
             modelBuilder.Entity<Client>()
                 .HasMany(c => c.Auto)
                 .WithOne(a => a.Client)
                 .HasForeignKey(a => a.Client_Id);
 
-            modelBuilder.Entity<Comanda>()
-                .HasOne(c => c.DetaliuComanda)
-                .WithOne(dc => dc.Comanda)
-                .HasForeignKey<DetaliuComanda>(dc => dc.Comanda_Id);
+            modelBuilder.Entity<DetaliuComanda>()
+                .HasOne(dc => dc.Comanda)
+                .WithOne(c => c.DetaliuComanda)
+                .HasForeignKey<Comanda>(c => c.DetaliuComanda_Id);
 
             modelBuilder.Entity<DetaliuComanda>()
                 .HasMany(dc => dc.Materials)

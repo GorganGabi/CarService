@@ -2,6 +2,8 @@
 using ModelDesignFirst_L1;
 using System;
 using System.Linq;
+using Omu.ValueInjecter;
+
 
 namespace CarService.Service
 {
@@ -72,6 +74,7 @@ namespace CarService.Service
 
             var sasiuDto = new SasiuDto
             {
+                Id = sasiu.Id,
                 Auto = sasiu.Auto,
                 CodSasiu = sasiu.CodSasiu,
                 Denumire = sasiu.Denumire,

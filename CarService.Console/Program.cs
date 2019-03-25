@@ -9,21 +9,31 @@ namespace CarService.Console
         static void Main(string[] args)
         {
             var autoContext = new CarServiceContext();
-
             var unitOfWork = new UnitOfWork(autoContext);
+            //var sasiuRepository = new Repository<Sasiu>(unitOfWork);
+            //var sasiuService = new SasiuService(sasiuRepository, unitOfWork);
+            //var sasiuDto = new SasiuDto
+            //{
+            //    Id = 2,
+            //    Denumire = "Fara Denumire"
+            //};
 
-            var sasiuRepository = new Repository<Sasiu>(unitOfWork);
+            //sasiuService.Update(sasiuDto);
 
-            var sasiuService = new SasiuService(sasiuRepository, unitOfWork);
-
-            var sasiu = new SasiuDto
+            var clientRepository = new Repository<Client>(unitOfWork);
+            var clientService = new ClientService(clientRepository, unitOfWork);
+            var client = new ClientDto
             {
-                Denumire = "DenumireSasiu",
-                CodSasiu = "4F"
+                Nume = "Nume",
+                Prenume = "Prenume",
+                Email = "email@gmail.com",
+                Adresa = "Adresa",
+                Judet = "Judet",
+                Localitate = "Localitate",
+              
             };
 
-            sasiuService.CreateNew(sasiu);
-
+            clientService.CreateNew(client);
         }
     }
 }

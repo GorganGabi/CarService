@@ -20,7 +20,7 @@
         <AssociationConnector Association="Model1.DetaliuComandaOperatie" />
         <AssociationConnector Association="Model1.DetaliuComandaMaterial" />
         <AssociationConnector Association="Model1.DetaliuComandaImagine" />
-        <EntityTypeShape EntityType="Model1.Sasiu" Width="1.5" PointX="4.125" PointY="0.625" />
+        <EntityTypeShape EntityType="Model1.Sasiu" Width="1.5" PointX="5.25" PointY="0.75" />
         <AssociationConnector Association="Model1.AutoSasiu" />
       </Diagram>
     </edmx:Diagrams>
