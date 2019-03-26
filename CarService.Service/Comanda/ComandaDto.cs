@@ -13,8 +13,8 @@ namespace CarService.Service
         public string Descriere { get; set; }
         public decimal ValoarePise { get; set; }
 
-        public virtual Client Client { get; set; }
-        public virtual Auto Auto { get; set; }
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        public virtual ClientDto Client { get; set; }
+        public virtual AutoDto Auto { get; set; }
+        public virtual DetaliuComandaDto DetaliuComanda { get; set; }
     }
 }

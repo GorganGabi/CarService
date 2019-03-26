@@ -5,6 +5,6 @@
         void CreateNew(MecanicDto mecanicDto);
         MecanicDto FindById(int mecanicId);
         void Update(MecanicDto mecanicDto);
-        void Delete(MecanicDto mecanicDto);
+        void Delete(int mecanicId);
     }
 }

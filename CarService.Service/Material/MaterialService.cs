@@ -8,9 +8,9 @@ namespace CarService.Service
     public class MaterialService : IMaterialService
     {
         private readonly IRepository<Material> materialRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public MaterialService(IRepository<Material> materialRepository, UnitOfWork unitOfWork)
+        public MaterialService(IRepository<Material> materialRepository, IUnitOfWork unitOfWork)
         {
             this.materialRepository = materialRepository;
             this.unitOfWork = unitOfWork;
@@ -36,21 +36,9 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(MaterialDto materialDto)
+        public void Delete(int materialId)
         {
-            if (materialDto == null)
-            {
-                throw new ArgumentNullException(nameof(materialDto));
-            }
-
-            var material = new Material
-            {
-                Cantitate = materialDto.Cantitate,
-                DataAprovizionare = materialDto.DataAprovizionare,
-                Denumire = materialDto.Denumire,
-                DetaliuComanda = materialDto.DetaliuComanda,
-                Pret = materialDto.Pret
-            };
+            var material = materialRepository.Get(s => s.Id == materialId).FirstOrDefault();
 
             materialRepository.Delete(material);
             unitOfWork.Commit();

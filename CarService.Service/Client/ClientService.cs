@@ -9,9 +9,9 @@ namespace CarService.Service
     public class ClientService : IClientService
     {
         private readonly IRepository<Client> clientRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ClientService(IRepository<Client> clientRepository, UnitOfWork unitOfWork)
+        public ClientService(IRepository<Client> clientRepository, IUnitOfWork unitOfWork)
         {
             this.clientRepository = clientRepository;
             this.unitOfWork = unitOfWork;
@@ -41,29 +41,12 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(ClientDto clientDto)
+        public void Delete(int clientId)
         {
-            if (clientDto == null)
-            {
-                throw new ArgumentNullException(nameof(clientDto));
-            }
-
-            var client = new Client
-            {
-                Adresa = clientDto.Adresa,
-                Auto = clientDto.Auto,
-                Email = clientDto.Email,
-                Judet = clientDto.Judet,
-                Localitate = clientDto.Localitate,
-                Nume = clientDto.Nume,
-                Prenume = clientDto.Prenume,
-                Telefon = clientDto.Telefon
-
-            };
+            var client = clientRepository.Get(s => s.Id == clientId).FirstOrDefault();
 
             clientRepository.Delete(client);
             unitOfWork.Commit();
-
         }
 
         public ClientDto FindById(int clientId)
@@ -126,7 +109,7 @@ namespace CarService.Service
             var client = clientRepository.Get(c => c.Id == clientDto.Id).FirstOrDefault();
 
             client.Judet = clientDto.Judet ?? client.Judet;
-            client.Localitate = clientDto.Localitate ?? clientDto.Localitate;
+            client.Localitate = clientDto.Localitate ?? client.Localitate;
             client.Nume = clientDto.Nume ?? client.Nume;
             client.Telefon = clientDto.Telefon == default(decimal) ? client.Telefon : clientDto.Telefon;
             client.Adresa = clientDto.Adresa ?? client.Adresa;

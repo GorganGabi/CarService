@@ -2,9 +2,9 @@
 {
     public interface IAutoService
     {
-        void CreateNew(AutoDto auto);
+        void CreateNew(AutoDto autoDto);
         AutoDto FindById(int autoId);
         void Update(AutoDto autoDto);
-        void Delete(AutoDto autoDto);
+        void Delete(int autoId);
     }
 }

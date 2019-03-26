@@ -2,9 +2,9 @@
 {
     public interface IComandaService 
     {
-        void CreateNew(ComandaDto autoDto);
-        ComandaDto FindById(int autoId);
-        void Update(ComandaDto autoDto);
-        void Delete(ComandaDto autoDto);
+        void CreateNew(ComandaDto comandaDto);
+        ComandaDto FindById(int comandaId);
+        void Update(ComandaDto comandaDto);
+        void Delete(int comandaId);
     }
 }

@@ -8,6 +8,6 @@ namespace CarService.Service
         public string Denumire { get; set; }
         public decimal TimpExecutie { get; set; }
 
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        public virtual DetaliuComandaDto DetaliuComanda { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace CarService.Service
     public class ImagineService : IImagineService
     {
         private readonly IRepository<Imagine> imagineRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ImagineService(IRepository<Imagine> imagineRepository, UnitOfWork unitOfWork)
+        public ImagineService(IRepository<Imagine> imagineRepository, IUnitOfWork unitOfWork)
         {
             this.imagineRepository = imagineRepository;
             this.unitOfWork = unitOfWork;
@@ -36,21 +36,9 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(ImagineDto imagineDto)
+        public void Delete(int imagineId)
         {
-            if (imagineDto == null)
-            {
-                throw new ArgumentNullException(nameof(imagineDto));
-            }
-
-            var imagine = new Imagine
-            {
-                Data = imagineDto.Data,
-                Descriere = imagineDto.Descriere,
-                DetaliuComanda = imagineDto.DetaliuComanda,
-                Foto = imagineDto.Foto,
-                Titlu = imagineDto.Titlu
-            };
+            var imagine = imagineRepository.Get(s => s.Id == imagineId).FirstOrDefault();
 
             imagineRepository.Delete(imagine);
             unitOfWork.Commit();

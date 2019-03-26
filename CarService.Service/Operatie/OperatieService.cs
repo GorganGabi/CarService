@@ -8,9 +8,9 @@ namespace CarService.Service
     public class OperatieService : IOperatieService
     {
         private readonly IRepository<Operatie> operatieRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public OperatieService(IRepository<Operatie> operatieRepository, UnitOfWork unitOfWork)
+        public OperatieService(IRepository<Operatie> operatieRepository, IUnitOfWork unitOfWork)
         {
             this.operatieRepository = operatieRepository;
             this.unitOfWork = unitOfWork;
@@ -34,19 +34,9 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(OperatieDto operatieDto)
+        public void Delete(int operatieId)
         {
-            if (operatieDto == null)
-            {
-                throw new ArgumentNullException(nameof(operatieDto));
-            }
-
-            var operatie = new Operatie
-            {
-                Denumire = operatieDto.Denumire,
-                DetaliuComanda = operatieDto.DetaliuComanda,
-                TimpExecutie = operatieDto.TimpExecutie
-            };
+            var operatie = operatieRepository.Get(s => s.Id == operatieId).FirstOrDefault();
 
             operatieRepository.Delete(operatie);
             unitOfWork.Commit();

@@ -10,6 +10,6 @@ namespace CarService.Service
         public decimal Pret { get; set; }
         public System.DateTime DataAprovizionare { get; set; }
 
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        public virtual DetaliuComandaDto DetaliuComanda { get; set; }
     }
 }

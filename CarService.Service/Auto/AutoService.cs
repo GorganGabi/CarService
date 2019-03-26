@@ -54,26 +54,6 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(AutoDto autoDto)
-        {
-            if (autoDto == null)
-            {
-                throw new ArgumentNullException(nameof(autoDto));
-            }
-
-            var auto = new Auto
-            {
-                Client = autoDto.Client,
-                Comanda = autoDto.Comanda,
-                NumarAuto = autoDto.NumarAuto,
-                Sasiu = autoDto.Sasiu,
-                SerieSasiu = autoDto.SerieSasiu
-            };
-
-            autoRepository.Delete(auto);
-            unitOfWork.Commit();
-        }
-
         public AutoDto FindById(int autoId)
         {
             if (autoId < 0)
@@ -99,6 +79,14 @@ namespace CarService.Service
             };
 
             return autoDto;
+        }
+
+        public void Delete(int autoId)
+        {
+            var comanda = autoRepository.Get(s => s.Id == autoId).FirstOrDefault();
+
+            autoRepository.Delete(comanda);
+            unitOfWork.Commit();
         }
     }
 }

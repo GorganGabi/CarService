@@ -8,6 +8,6 @@ namespace CarService.Service
         public string Nume { get; set; }
         public string Prenume { get; set; }
 
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        public virtual DetaliuComandaDto DetaliuComanda { get; set; }
     }
 }

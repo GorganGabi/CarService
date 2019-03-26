@@ -14,7 +14,7 @@ namespace CarService.Service
         public decimal Telefon { get; set; }
         public string Email { get; set; }
 
-        public virtual Comanda Comanda { get; set; }
-        public virtual ICollection<Auto> Auto { get; set; }
+        public virtual ComandaDto Comanda { get; set; }
+        public virtual ICollection<AutoDto> Auto { get; set; }
     }
 }

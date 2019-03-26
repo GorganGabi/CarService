@@ -7,14 +7,14 @@ namespace CarService.Service
     {
         public int Id { get; set; }
 
-        public virtual Comanda Comanda { get; set; }
+        public virtual ComandaDto Comanda { get; set; }
 
-        public virtual ICollection<Mecanic> Mecanici { get; set; }
+        public virtual ICollection<MecanicDto> Mecanici { get; set; }
 
-        public virtual ICollection<Operatie> Operaties { get; set; }
+        public virtual ICollection<OperatieDto> Operaties { get; set; }
 
-        public virtual ICollection<Material> Materials { get; set; }
+        public virtual ICollection<MaterialDto> Materials { get; set; }
 
-        public virtual ICollection<Imagine> Imagines { get; set; }
+        public virtual ICollection<ImagineDto> Imagines { get; set; }
     }
 }

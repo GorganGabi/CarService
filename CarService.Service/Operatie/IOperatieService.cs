@@ -5,6 +5,6 @@
         void CreateNew(OperatieDto operatieDto);
         OperatieDto FindById(int operatieId);
         void Update(OperatieDto operatieDto);
-        void Delete(OperatieDto operatieDto);
+        void Delete(int operatieId);
     }
 }

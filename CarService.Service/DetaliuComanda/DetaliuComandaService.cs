@@ -8,9 +8,9 @@ namespace CarService.Service
     public class DetaliuComandaService : IDetaliuComandaService
     {
         private readonly IRepository<DetaliuComanda> detaliuComandaRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public DetaliuComandaService(IRepository<DetaliuComanda> detaliuComandaRepository, UnitOfWork unitOfWork)
+        public DetaliuComandaService(IRepository<DetaliuComanda> detaliuComandaRepository, IUnitOfWork unitOfWork)
         {
             this.detaliuComandaRepository = detaliuComandaRepository;
             this.unitOfWork = unitOfWork;
@@ -36,25 +36,12 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(DetaliuComandaDto detaliuComandaDto)
+        public void Delete(int detaliuComandaId)
         {
-            if (detaliuComandaDto == null)
-            {
-                throw new ArgumentNullException(nameof(detaliuComandaDto));
-            }
-
-            var detaliuComanda = new DetaliuComanda
-            {
-                Comanda = detaliuComandaDto.Comanda,
-                Imagines = detaliuComandaDto.Imagines,
-                Materials = detaliuComandaDto.Materials,
-                Mecanici = detaliuComandaDto.Mecanici,
-                Operaties = detaliuComandaDto.Operaties
-            };
+            var detaliuComanda = detaliuComandaRepository.Get(s => s.Id == detaliuComandaId).FirstOrDefault();
 
             detaliuComandaRepository.Delete(detaliuComanda);
             unitOfWork.Commit();
-
         }
 
         public DetaliuComandaDto FindById(int detaliuComandaId)

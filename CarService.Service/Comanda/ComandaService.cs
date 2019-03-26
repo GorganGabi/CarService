@@ -8,10 +8,10 @@ namespace CarService.Service
     public class ComandaService : IComandaService
     {
         private readonly IRepository<Comanda> comandaRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
         private enum StareComanda { InAsteptare, Executata, RefuzataLaExecutie };
 
-        public ComandaService(IRepository<Comanda> comandaRepository, UnitOfWork unitOfWork)
+        public ComandaService(IRepository<Comanda> comandaRepository, IUnitOfWork unitOfWork)
         {
             this.comandaRepository = comandaRepository;
             this.unitOfWork = unitOfWork;
@@ -38,30 +38,6 @@ namespace CarService.Service
             };
 
             comandaRepository.Add(comanda);
-            unitOfWork.Commit();
-        }
-
-        public void Delete(ComandaDto comandaDto)
-        {
-            if (comandaDto == null)
-            {
-                throw new ArgumentOutOfRangeException(nameof(comandaDto));
-            }
-
-            var comanda = new Comanda
-            {
-                Auto = comandaDto.Auto,
-                DataFinalizare = comandaDto.DataFinalizare,
-                DataProgramare = comandaDto.DataProgramare,
-                DataSystem = comandaDto.DataSystem,
-                Descriere = comandaDto.Descriere,
-                DetaliuComanda = comandaDto.DetaliuComanda,
-                KmBord = comandaDto.KmBord,
-                StareComanda = comandaDto.StareComanda,
-                ValoarePise = comandaDto.ValoarePise
-            };
-
-            comandaRepository.Delete(comanda);
             unitOfWork.Commit();
         }
 
@@ -115,6 +91,14 @@ namespace CarService.Service
             comanda.StareComanda = comandaDto.StareComanda == default(int) ? comanda.StareComanda : comanda.StareComanda;
             comanda.ValoarePise = comandaDto.ValoarePise == default(int) ? comanda.ValoarePise : comanda.ValoarePise;
 
+            unitOfWork.Commit();
+        }
+
+        public void Delete(int comandaId)
+        {
+            var comanda = comandaRepository.Get(s => s.Id == comandaId).FirstOrDefault();
+
+            comandaRepository.Delete(comanda);
             unitOfWork.Commit();
         }
     }

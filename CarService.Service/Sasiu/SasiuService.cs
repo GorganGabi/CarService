@@ -10,9 +10,9 @@ namespace CarService.Service
     public class SasiuService : ISasiuService
     {
         private readonly IRepository<Sasiu> sasiuRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public SasiuService(IRepository<Sasiu> sasiuRepository, UnitOfWork unitOfWork)
+        public SasiuService(IRepository<Sasiu> sasiuRepository, IUnitOfWork unitOfWork)
         {
             this.sasiuRepository = sasiuRepository;
             this.unitOfWork = unitOfWork;
@@ -37,20 +37,9 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(SasiuDto sasiuDto)
+        public void Delete(int sasiuId)
         {
-            if (sasiuDto == null)
-            {
-                throw new ArgumentNullException(nameof(sasiuDto));
-            }
-
-            var sasiu = new Sasiu
-            {
-                Auto = sasiuDto.Auto,
-                CodSasiu = sasiuDto.CodSasiu,
-                Denumire = sasiuDto.Denumire,
-
-            };
+            var sasiu = sasiuRepository.Get(s => s.Id == sasiuId).FirstOrDefault();
 
             sasiuRepository.Delete(sasiu);
             unitOfWork.Commit();

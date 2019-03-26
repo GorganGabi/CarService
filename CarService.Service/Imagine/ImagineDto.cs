@@ -10,6 +10,6 @@ namespace CarService.Service
         public System.DateTime Data { get; set; }
         public byte[] Foto { get; set; }
 
-        public virtual DetaliuComanda DetaliuComanda { get; set; }
+        public virtual DetaliuComandaDto DetaliuComanda { get; set; }
     }
 }

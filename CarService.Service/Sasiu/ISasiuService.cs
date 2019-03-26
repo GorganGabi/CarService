@@ -5,6 +5,6 @@
         void CreateNew(SasiuDto sasiuDto);
         SasiuDto FindById(int sasiuId);
         void Update(SasiuDto sasiuDto);
-        void Delete(SasiuDto sasiuDto);
+        void Delete(int sasiuId);
     }
 }

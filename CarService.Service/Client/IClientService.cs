@@ -5,7 +5,7 @@
         void CreateNew(ClientDto clientDto);
         ClientDto FindById(int clientId);
         void Update(ClientDto clientDto);
-        void Delete(ClientDto clientDto);
+        void Delete(int clientId);
         ClientDto GetCars(int clientId);
     }
 }

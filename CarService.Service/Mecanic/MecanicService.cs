@@ -8,9 +8,9 @@ namespace CarService.Service
     public class MecanicService : IMecanicService
     {
         private readonly IRepository<Mecanic> mecanicRepository;
-        private readonly UnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        public MecanicService(IRepository<Mecanic> mecanicRepository, UnitOfWork unitOfWork)
+        public MecanicService(IRepository<Mecanic> mecanicRepository, IUnitOfWork unitOfWork)
         {
             this.mecanicRepository = mecanicRepository;
             this.unitOfWork = unitOfWork;
@@ -34,19 +34,9 @@ namespace CarService.Service
             unitOfWork.Commit();
         }
 
-        public void Delete(MecanicDto mecanicDto)
+        public void Delete(int mecanicId)
         {
-            if (mecanicDto == null)
-            {
-                throw new ArgumentOutOfRangeException(nameof(mecanicDto));
-            }
-
-            var mecanic = new Mecanic
-            {
-                DetaliuComanda = mecanicDto.DetaliuComanda,
-                Nume = mecanicDto.Nume,
-                Prenume = mecanicDto.Prenume
-            };
+            var mecanic = mecanicRepository.Get(s => s.Id == mecanicId).FirstOrDefault();
 
             mecanicRepository.Delete(mecanic);
             unitOfWork.Commit();

@@ -2,7 +2,7 @@
 {
     public partial class Imagine : Entity
     {
-        public int DetaliuComanda_Id { get; set; }
-        
+        public int DetaliuComanda_Id { get; set; }       
     }
 }
+ 
