@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F8175646-65E6-44B6-8018-552817B6A8EB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CarService.Console</RootNamespace>
-    <AssemblyName>CarService.Console</AssemblyName>
+    <ProjectGuid>{BF459713-2BF1-4964-80DC-F52EAC1F84BB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarService.Service.EF</RootNamespace>
+    <AssemblyName>CarService.Service.EF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,14 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="Omu.ValueInjecter, Version=3.1.3.0, Culture=neutral, PublicKeyToken=5692a4ecdffbe736, processorArchitecture=MSIL">
+      <HintPath>..\packages\ValueInjecter.3.1.3\lib\net45\Omu.ValueInjecter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,26 +44,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Auto\AutoDto.cs" />
+    <Compile Include="Auto\AutoService.cs" />
+    <Compile Include="Auto\IAutoService.cs" />
+    <Compile Include="Client\ClientDto.cs" />
+    <Compile Include="Client\ClientService.cs" />
+    <Compile Include="Client\IClientService.cs" />
+    <Compile Include="Comanda\ComandaDto.cs" />
+    <Compile Include="Comanda\ComandaService.cs" />
+    <Compile Include="Comanda\IComandaService.cs" />
+    <Compile Include="DetaliuComanda\DetaliuComandaDto.cs" />
+    <Compile Include="DetaliuComanda\DetaliuComandaService.cs" />
+    <Compile Include="DetaliuComanda\IDetaliuComandaService.cs" />
+    <Compile Include="Imagine\IImagineService.cs" />
+    <Compile Include="Imagine\ImagineDto.cs" />
+    <Compile Include="Imagine\ImagineService.cs" />
+    <Compile Include="Material\IMaterialService.cs" />
+    <Compile Include="Material\MaterialDto.cs" />
+    <Compile Include="Material\MaterialService.cs" />
+    <Compile Include="Mecanic\IMecanicService.cs" />
+    <Compile Include="Mecanic\MecanicDto.cs" />
+    <Compile Include="Mecanic\MecanicService.cs" />
+    <Compile Include="Operatie\IOperatieService.cs" />
+    <Compile Include="Operatie\OperatieDto.cs" />
+    <Compile Include="Operatie\OperatieService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="Sasiu\ISasiuService.cs" />
+    <Compile Include="Sasiu\SasiuDto.cs" />
+    <Compile Include="Sasiu\SasiuService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarService.Data\CarService.Data.csproj">
-      <Project>{ec0cf784-7cd5-4b4c-9496-32e5b9ebf58a}</Project>
+      <Project>{EC0CF784-7CD5-4B4C-9496-32E5B9EBF58A}</Project>
       <Name>CarService.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarService.Infrastructure.EF\CarService.Infrastructure.EF.csproj">
-      <Project>{4c2f27da-8306-4feb-9f3c-8f46a9bd4a02}</Project>
+      <Project>{4C2F27DA-8306-4FEB-9F3C-8F46A9BD4A02}</Project>
       <Name>CarService.Infrastructure.EF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarService.Service.EF\CarService.Service.EF.csproj">
-      <Project>{bf459713-2bf1-4964-80dc-f52eac1f84bb}</Project>
-      <Name>CarService.Service.EF</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

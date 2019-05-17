@@ -1,6 +1,11 @@
-﻿using CarService.Infrastructure;
-using CarService.Service;
+﻿using CarService.Infrastructure.EF;
+using CarService.Service.EF;
 using ModelDesignFirst_L1;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CarService.Console
 {
@@ -10,30 +15,37 @@ namespace CarService.Console
         {
             var autoContext = new CarServiceContext();
             var unitOfWork = new UnitOfWork(autoContext);
-            //var sasiuRepository = new Repository<Sasiu>(unitOfWork);
-            //var sasiuService = new SasiuService(sasiuRepository, unitOfWork);
-            //var sasiuDto = new SasiuDto
-            //{
-            //    Id = 2,
-            //    Denumire = "Fara Denumire"
-            //};
 
-            //sasiuService.Update(sasiuDto);
-
+            var autoRepository = new Repository<Auto>(unitOfWork);
             var clientRepository = new Repository<Client>(unitOfWork);
+            var sasiuRepository = new Repository<Sasiu>(unitOfWork);
+
+
             var clientService = new ClientService(clientRepository, unitOfWork);
-            var client = new ClientDto
+            var autoService = new AutoService(autoRepository, unitOfWork);
+            var sasiuService = new SasiuService(sasiuRepository, unitOfWork);
+
+            var sasiuDto = new SasiuDto
             {
-                Nume = "Nume",
-                Prenume = "Prenume",
-                Email = "email@gmail.com",
-                Adresa = "Adresa",
-                Judet = "Judet",
-                Localitate = "Localitate",
-              
+                Denumire = "Fara Denumire",
+                CodSasiu = "8C"
             };
 
-            clientService.CreateNew(client);
+            sasiuService.CreateNew(sasiuDto);
+            //sasiuService.Update(sasiuDto);
+
+            /*var client = new ClientDto
+            {
+                Nume = "Nume1",
+                Prenume = "Prenume1",
+                Email = "email1@gmail.com",
+                Adresa = "Adresa1",
+                Judet = "Judet1",
+                Localitate = "Localitate1"
+            };*/
+
+            //clientService.CreateNew(client);
+            //clientService.Delete(5);
         }
     }
 }
