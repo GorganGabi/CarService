@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Service.EF", "Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Infrastructure.EF", "CarService.Infrastructure.EF\CarService.Infrastructure.EF.csproj", "{4C2F27DA-8306-4FEB-9F3C-8F46A9BD4A02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Console", "CarService.Console\CarService.Console.csproj", "{F8175646-65E6-44B6-8018-552817B6A8EB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.ObjectWCF", "CarService.ObjectWCF\CarService.ObjectWCF.csproj", "{95AED7BD-6963-4BD6-A798-DBD42A186351}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.HostWCF", "CarService.HostWCF\CarService.HostWCF.csproj", "{472B75E9-BD4D-4BFD-A625-C94A98F4C6D2}"
@@ -39,10 +37,6 @@ Global
 		{4C2F27DA-8306-4FEB-9F3C-8F46A9BD4A02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C2F27DA-8306-4FEB-9F3C-8F46A9BD4A02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C2F27DA-8306-4FEB-9F3C-8F46A9BD4A02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8175646-65E6-44B6-8018-552817B6A8EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8175646-65E6-44B6-8018-552817B6A8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8175646-65E6-44B6-8018-552817B6A8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8175646-65E6-44B6-8018-552817B6A8EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95AED7BD-6963-4BD6-A798-DBD42A186351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95AED7BD-6963-4BD6-A798-DBD42A186351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95AED7BD-6963-4BD6-A798-DBD42A186351}.Release|Any CPU.ActiveCfg = Release|Any CPU
