@@ -1,11 +1,6 @@
 ﻿using CarService.Infrastructure.EF;
 using CarService.Service.EF;
 using ModelDesignFirst_L1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarService.Console
 {
@@ -28,11 +23,14 @@ namespace CarService.Console
             var sasiuDto = new SasiuDto
             {
                 Denumire = "Fara Denumire",
-                CodSasiu = "8C"
+                CodSasiu = "8D"
             };
 
-            sasiuService.CreateNew(sasiuDto);
-            //sasiuService.Update(sasiuDto);
+            var updateSasiu = sasiuService.FindById(3);
+            updateSasiu.CodSasiu = "8D";
+            
+            //sasiuService.CreateNew(sasiuDto);
+            sasiuService.Update(updateSasiu);
 
             /*var client = new ClientDto
             {

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CarService.Console")]
+[assembly: AssemblyTitle("CarService.HostWCF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CarService.Console")]
+[assembly: AssemblyProduct("CarService.HostWCF")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f8175646-65e6-44b6-8018-552817b6a8eb")]
+[assembly: Guid("472b75e9-bd4d-4bfd-a625-c94a98f4c6d2")]
 
 // Version information for an assembly consists of the following four values:
 //
